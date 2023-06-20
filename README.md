@@ -5,7 +5,7 @@ Brandefense 2023 Internship Camp | Technical Preliminary
 admin/ <br />
 users/ <br />
 api-auth/login/ <br />
-api-auth/ logout/ <br />
+api-auth/logout/ <br />
 posts/
 
 # users
