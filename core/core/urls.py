@@ -16,8 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from crawler.api.views import SubredditPostView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('user.api.urls')),
+    path('users/', include('user.api.urls')),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('posts/', SubredditPostView.as_view()),
 ]
