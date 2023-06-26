@@ -9,8 +9,9 @@ api-auth/logout/ <br />
 posts/
 
 # users
-user1 password: Brandefense2023* <br />
-admin password: 12345 <br />
+python3 manage.py createsuperuser
 
-# Environments > env.py
-REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET, REDDIT_USER_AGENT <br />
+# Reddit Connection > env.py
+REDDIT_CLIENT_ID, <br/>
+REDDIT_CLIENT_SECRET, <br/>
+REDDIT_USER_AGENT <br />
