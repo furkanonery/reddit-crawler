@@ -6,7 +6,7 @@ from crawler.models import SubredditPost
 from datetime import datetime
 from env import REDDIT_CLIENT_ID,REDDIT_CLIENT_SECRET,REDDIT_USER_AGENT
 
-class SubredditPostView(APIView):
+class SubredditPostViewPraw(APIView):
     def get(self, request, format=None):
         # Reddit API istemcisini oluşturuyorum
         reddit = Reddit(client_id=REDDIT_CLIENT_ID, client_secret=REDDIT_CLIENT_SECRET,
