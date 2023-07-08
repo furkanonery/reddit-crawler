@@ -16,11 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from crawler.api.views import SubredditPostViewPraw
+# from crawler.api.views import SubredditPostViewPraw
+from crawler_soup.api.views import SubredditsView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('user.api.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('postsPraw/', SubredditPostViewPraw.as_view()),
+    # path('postsPraw/', SubredditPostViewPraw.as_view()),
+    path('postsSoup/', SubredditsView.as_view())
 ]

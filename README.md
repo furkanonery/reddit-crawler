@@ -6,8 +6,8 @@ admin/ <br />
 users/ <br />
 api-auth/login/ <br />
 api-auth/ logout/ <br />
-postsPraw/
-postSoup/
+postsSoup/
 
-# Environments > env.py
-REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET, REDDIT_USER_AGENT <br />
+# Celery Work
+celery -A crawler_soup worker --loglevel=info
+celery -A crawler_soup beat --loglevel=info

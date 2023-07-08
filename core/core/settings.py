@@ -12,6 +12,27 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+
+CELERY_APP = 'crawler_soup'  # Celery görevlerinin tanımlandığı modül adı
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TIMEZONE = 'UTC'
+
+# Celery yapılandırması
+CELERY_BEAT_SCHEDULE = {
+    'getposts': {
+        'task': 'crawler_soup.api.task.getposts',
+        'schedule': 180,  # Saniye cinsinden
+    },
+}
+
+CELERY_TASK_MODULES = ('crawler_soup.api.task',)
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -40,6 +61,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'crawler',
     'user',
+    'crawler_soup',
 ]
 
 MIDDLEWARE = [
@@ -78,8 +100,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'redditCrawlerDB', 
+        'USER': 'furkan',
+        'PASSWORD': '210',
+        'HOST': '127.0.0.1', 
+        'PORT': '5432',
     }
 }
 
