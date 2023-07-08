@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
@@ -22,13 +23,19 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TIMEZONE = 'UTC'
 
-# Celery yapılandırması
 CELERY_BEAT_SCHEDULE = {
     'getposts': {
         'task': 'crawler_soup.api.task.getposts',
-        'schedule': 180,  # Saniye cinsinden
+        'schedule': timedelta(seconds=10),
+        'options': {
+            'expires': 120,
+        },
+        'args': (),
+        'kwargs': {},
     },
 }
+
+CELERYBEAT_SCHEDULE = CELERY_BEAT_SCHEDULE.copy()
 
 CELERY_TASK_MODULES = ('crawler_soup.api.task',)
 
