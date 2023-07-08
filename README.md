@@ -9,7 +9,7 @@ api-auth/ logout/ <br />
 postsSoup/
 
 # Celery Work
-celery -A crawler_soup worker --loglevel=info
+celery -A crawler_soup worker --loglevel=info <br />
 celery -A crawler_soup beat --loglevel=info
 
 # users
