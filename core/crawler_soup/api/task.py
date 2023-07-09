@@ -22,14 +22,14 @@ def convert_to_datetime(text):
         minutes = int(text.split()[0])
         timedelta_obj = timedelta(minutes=minutes)
     elif 'hour ago' in text:
-        hours = int(text.split()[0])
-        timedelta_obj = timedelta(hours=hours)
+        hour = 1
+        timedelta_obj = timedelta(hours=hour)
     elif 'minute ago' in text:
-        minutes = int(text.split()[0])
-        timedelta_obj = timedelta(minutes=minutes)
+        minute = 1
+        timedelta_obj = timedelta(minutes=minute)
     elif 'day ago' in text:
-        days = 0
-        timedelta_obj = timedelta(days=days)
+        day = 1
+        timedelta_obj = timedelta(days=day)
     elif 'just now' in text:
         datetime_obj = datetime.now()
         return datetime_obj
@@ -106,10 +106,10 @@ def getposts():
             datetimeText = post.find('span', {'class', '_2VF2J19pUIMSLJFky-7PEI'}).getText()
             datetime = convert_to_datetime(datetimeText)
 
-            try:
-                vote = int(vote)  # Convert vote to an integer
-            except ValueError:
-                vote = 0  # Assign a default value if vote cannot be converted to an integer
+            if vote=="Vote":
+                vote = 0
+            else:
+                vote = int(vote)
 
 
             subreddit_post = SubredditPost(
