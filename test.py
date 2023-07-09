@@ -97,8 +97,13 @@ def getposts():
             datetimeText = post.find('span', {'class', '_2VF2J19pUIMSLJFky-7PEI'}).getText()
             datetime = convert_to_datetime(datetimeText)
             
+            if vote=="Vote":
+                vote = 0
+            else:
+                vote = int(vote)
             print(f'Başlık {title}')
             print(f'Vote:{vote}')
+            print(type(vote))
             print(f'Author:{author}')
             print(f'Datetime:{datetime}')
             if text is not None:
