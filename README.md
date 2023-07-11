@@ -74,4 +74,6 @@ postsSoup/
 
 
 ### Add admin user
+```
 python3 manage.py createsuperuser
+```
