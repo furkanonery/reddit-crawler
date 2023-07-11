@@ -73,5 +73,5 @@ postsSoup/
 3. Open your browser and visit `http://localhost:8000` to start using the Crawler Soup application.
 
 
-# users
+### Add admin user
 python3 manage.py createsuperuser
